@@ -1,0 +1,83 @@
+.\" $NCDId: @(#)AuSP.man,v 1.1 1995/05/23 23:54:58 greg Exp $
+.\" copyright 1995 Yoav Eilat
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuSP.man,v 1.1.1.1 1999/05/08 18:47:26 jon Exp $
+.TH AuSoundPlay 3 "1.2" "soundlib"
+.SH \fBName\fP
+\fBAuSoundPlay\fP \- create a flow to play audio from any source.
+.SH \fBSynopsis\fP
+
+.br
+
+.sp 1
+\fBAuEventHandlerRec\fP *\fBAuSoundPlay\fP(\fIserver\fP, \fIdestination\fP, \fIvolume\fP, \fImode\fP, \fIsound_data\fP, \fIflow\fP ,\fIvolume_mult_elem\fP, \fImonitor_element\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuDeviceID\fP \fIdestination\fP;
+.br
+    \fBAuFixedPoint\fP \fIvolume\fP;
+.br
+    int \fImode\fP;
+.br
+    \fBAuSoundDataPtr\fP \fIsound_data\fP;
+.br
+    \fBAuFlowID\fP *\fIflow\fP; 
+.br
+    int *\fIvolume_mult_elem\fP; 
+.br
+    int *\fImonitor_element\fP; 
+.br
+    \fBAuStatus\fP *\fIstatus\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIdestination\fP 1i
+Specifies the device to output the audio data.
+.IP \fIvolume\fP 1i
+Specifies the volume.
+.IP \fImode\fP 1i
+Specifies the line mode for the output device.
+Currently the following line modes are defined: \fBAuDeviceOutputModeNone\fP, \fBAuDeviceOutputModeSpeaker\fP, \fBAuDeviceOutputModeHeadphone\fP, \fBAuDeviceOutputModeLineOut\fP.
+.IP \fIsound_data\fP 1i
+Specifies the sound information.
+.IP \fIflow\fP 1i
+If non-NULL, returns the flow ID.
+.IP \fIvolume_mult_elem\fP 1i
+If non-NULL, returns the index of the volume multipler element.
+.IP \fImonitor_element\fP 1i
+If non-NULL, include an ExportMonitor element in the flow and return it's index.
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuSoundPlay\fP creates a flow to play audio from any source on \fIdevice\fP and returns a pointer to the event handler created or NULL if there was an error. The \fIsound_data\fP structure contains the necessary information about the audio format and the data handling function.
+.SH \fBErrors\fP
+\fBAuBadDevice\fP.
+.SH \fBSee Also\fP
+\fBAuSoundPlayFromBucket\fP,
+\fBAuSoundPlayFromData\fP,
+\fBAuSoundPlayFromFile\fP,
+\fBAuSoundPlaySynchronousFromFile\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

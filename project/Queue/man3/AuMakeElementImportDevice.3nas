@@ -1,0 +1,78 @@
+.\" $NCDId: @(#)AuMElImD.man,v 1.1 1994/09/27 00:32:11 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuMElImD.man,v 1.1.1.1 1999/05/08 18:47:24 jon Exp $
+.TH AuMakeElementImportDevice 3 "1.2" "audiolib - element initialization"
+.SH \fBName\fP
+\fBAuMakeElementImportDevice\fP \- initialize an ImportDevice element
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuMakeElementImportDevice\fP(\fIelement\fP, \fIsample_rate\fP, \fIdevice\fP, \fInum_samples\fP, \fInum_actions\fP, \fIactions\fP)
+.br
+    \fBAuElement\fP *\fIelement\fP; 
+.br
+    unsigned short \fIsample_rate\fP;
+.br
+    \fBAuDeviceID\fP \fIdevice\fP;
+.br
+    \fBAuUint32\fP \fInum_samples\fP;
+.br
+    int \fInum_actions\fP;
+.br
+    \fBAuElementAction\fP *\fIactions\fP;
+.SH \fBArguments\fP
+.IP \fIelement\fP 1i
+Returns the initialized element.
+.IP \fIsample_rate\fP 1i
+Specifies the sample rate of the audio data.
+.IP \fIdevice\fP 1i
+Specifies the ID of the device to read the audio data from.
+.IP \fInum_samples\fP 1i
+Specifies the number of samples to read from the device.
+Use \fBAuUnlimitedSamples\fP to indicate an unlimited number of samples.
+.IP \fInum_actions\fP 1i
+Specifies the number of actions in \fIactions\fP.
+.IP \fIactions\fP 1i
+Specifies the list of actions to associate with this element.
+Entries in this list can be initialized with \fBAuMakeChangeStateAction\fP, \fBAuMakeSendNotifyAction\fP, and \fBAuMakeNoopAction\fP.
+May be NULL.
+.SH \fBDescription\fP
+\fBAuMakeElementImportDevice\fP sets the \fItype\fP member of \fIelement\fP to \fBAuElementTypeImportDevice\fP and initializes the \fIimportdevice\fP member of \fIelement\fP with the remaining arguments.
+.LP
+\fBAuMakeElementImportDevice\fP is implemented as a macro.
+.SH \fBSee Also\fP
+\fBAuMakeElementAddConstant\fP,
+\fBAuMakeElementBundle\fP,
+\fBAuMakeElementExportBucket\fP,
+\fBAuMakeElementExportClient\fP,
+\fBAuMakeElementExportDevice\fP,
+\fBAuMakeElementExportMonitor\fP,
+\fBAuMakeElementImportBucket\fP,
+\fBAuMakeElementImportClient\fP,
+\fBAuMakeElementImportWaveForm\fP,
+\fBAuMakeElementMultiplyConstant\fP,
+\fBAuMakeElementSum\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

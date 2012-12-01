@@ -1,0 +1,68 @@
+.\" $NCDId: @(#)AuGEDTxt.man,v 1.1 1994/09/27 00:28:31 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuGEDTxt.man,v 1.1.1.1 1999/05/08 18:47:23 jon Exp $
+.TH AuGetErrorDatabaseText 3 "1.2" "audiolib - error handling"
+.SH \fBName\fP
+\fBAuGetErrorDatabaseText\fP \- get an error message from the error database
+.SH \fBSynopsis\fP
+
+.sp 1
+void \fBAuGetErrorDatabaseText\fP(\fIserver\fP, \fIname\fP, \fImessage\fP, \fIdefault_string\fP, \fIbuffer_return\fP, \fIlength\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    char *\fIname\fP;
+.br
+    char *\fImessage\fP;
+.br
+    char *\fIdefault_string\fP;
+.br
+    char *\fIbuffer_return\fP; 
+.br
+    int \fIlength\fP;
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIname\fP 1i
+Specifies the name of the application.
+.IP \fImessage\fP 1i
+Specifies the type of the error message.
+.IP \fIdefault_string\fP 1i
+Specifies the default error message if none is found in the database.
+.IP \fIbuffer_return\fP 1i
+Returns the error description.
+.IP \fIlength\fP 1i
+Specifies the size of the buffer.
+.SH \fBDescription\fP
+The \fBAuGetErrorDatabaseText\fP function copies the \fIdefault_string\fP and returns it in \fIbuffer_return\fP.
+The \fIname\fP and \fImessage\fP arguments are ignored.
+.SH \fBSee Also\fP
+\fBAuServerName\fP,
+\fBAuGetErrorText\fP,
+\fBAuSetErrorHandler\fP,
+\fBAuSetIOErrorHandler\fP,
+\fBAuSynchronize\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

@@ -1,0 +1,76 @@
+.\" $NCDId: @(#)AuMonDev.man,v 1.1 1994/09/27 00:33:19 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuMonDev.man,v 1.1.1.1 1999/05/08 18:47:25 jon Exp $
+.TH AuMonitorDevice 3 "1.2" ""
+.SH \fBName\fP
+\fBAuMonitorDevice\fP \- 
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuEventHandlerRec\fP *
+\fBAuMonitorDevice\fP(\fIserver\fP, \fIsample_rate\fP, \fIinput_device\fP, \fIoutput_device\fP, \fIvolume\fP, \fIdone_callback\fP, \fIcallback_data\fP, \fIflow\fP, \fIvolume_mult_element\fP, \fImonitor_element\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    int \fIsample_rate\fP;
+.br
+    \fBAuDeviceID\fP \fIinput_device\fP;
+.br
+    \fBAuDeviceID\fP \fIoutput_device\fP;
+.br
+    \fBAuFixedPoint\fP \fIvolume\fP;
+.br
+    void (*\fIdone_callback\fP) (\fBAuServer\fP *, \fBAuEventHandlerRec\fP *, \fBAuEvent\fP *, \fBAuPointer\fP);
+.br
+    \fBAuPointer\fP \fIcallback_data\fP;
+.br
+    \fBAuFlowID\fP *\fIflow\fP; 
+.br
+    int *\fIvolume_mult_element\fP; 
+.br
+    int *\fImonitor_element\fP; 
+.br
+    \fBAuStatus\fP *\fIstatus\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIsample_rate\fP 1i
+Specifies the sample rate of the 
+.IP \fIinput_device\fP 1i
+.IP \fIoutput_device\fP 1i
+.IP \fIvolume\fP 1i
+.IP \fIdone_callback\fP 1i
+.IP \fIcallback_data\fP 1i
+.IP \fIflow\fP 1i
+.IP \fIvolume_mult_element\fP 1i
+.IP \fImonitor_element\fP 1i
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuMonitorDevice\fP
+.SH \fBErrors\fP
+.SH \fBSee Also\fP
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

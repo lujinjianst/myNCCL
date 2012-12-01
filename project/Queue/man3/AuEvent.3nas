@@ -1,0 +1,67 @@
+.\" $NCDId: @(#)AuEvent.man,v 1.1 1994/09/27 00:26:29 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuEvent.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuEvent 3 "1.2" "audiolib - events"
+.SH \fBName\fP
+\fBAuEvent\fP \- event union
+.SH \fBStructures\fP
+
+.sp 1
+typedef union _AuEvent
+.br
+{
+.br
+    int \fItype\fP;
+.br
+    \fBAuAnyEvent\fP \fIauany\fP;
+.br
+    \fBAuElementNotifyEvent\fP \fIauelementnotify\fP;
+.br
+    \fBAuMonitorNotifyEvent\fP \fIaumonitornotify\fP;
+.br
+    \fBAuGrabNotifyEvent\fP \fIaugrabnotify\fP;
+.br
+    \fBAuErrorEvent\fP \fIauerror\fP;
+.br
+}\fBAuEvent\fP;
+.SH \fBMembers\fP
+.IP \fItype\fP 1i
+Specifies the event type.
+Currently, the following event types are defined: \fBAuEventTypeElementNotify\fP, \fBAuEventTypeGrabNotify\fP, or \fBAuEventTypeMonitorNotify\fP.
+.IP \fIauany\fP 1i
+Specifies a generic event structure containing members common to all event types.
+.IP \fIauelementnotify\fP 1i
+Sent to client applications to notify them of a watermark condition or a state change.
+.IP \fIaumonitornotify\fP 1i
+Sent to client applications to notify them of monitor data.
+.IP \fIaugrabnotify\fP 1i
+Not Implemented.
+.IP \fIauerror\fP 1i
+Sent to client applications to notify them of non-fatal errors encountered while processing requests.
+.SH \fBDescription\fP
+Events are the principal mechanism for the server to communicate with a client application.
+.SH \fBSee Also\fP
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

@@ -1,0 +1,62 @@
+.\" $NCDId: @(#)AuElParm.man,v 1.1 1994/09/27 00:26:04 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuElParm.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuElementParameters 3 "1.2" "audiolib - "
+.SH \fBName\fP
+\fBAuElementParameters\fP \- element parameters structure
+.SH \fBStructures\fP
+
+.sp 1
+typedef struct _AuElementParameters
+.br
+{
+.br
+    \fBAuFlowID\fP \fIflow\fP;
+.br
+    unsigned char \fIelement_num\fP;
+.br
+    unsigned char \fInum_parameters\fP;
+.br
+    unsigned short \fIpad\fP;
+.br
+    \fBAuInt32\fP \fIparameters\fP[\fBAU_MAX_PARMS\fP];
+.br
+}\fBAuElementParameters\fP;
+.SH \fBMembers\fP
+.IP \fIflow\fP 1i
+Specifies the ID of the flow.
+.IP \fIelement_num\fP 1i
+Specifies the index of the element.
+.IP \fInum_parameters\fP 1i
+Specifies the number of parameters.
+.IP \fIparameters\fP 1i
+Specifies an array containing the element parameters.
+.SH \fBDescription\fP
+The \fBAuElementParameters\fP structure is used to access those element parameters that can be changed dynamically.
+.SH \fBSee Also\fP
+\fBAuGetElementParameters\fP,
+\fBAuSetElementParameters\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

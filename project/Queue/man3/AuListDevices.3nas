@@ -1,0 +1,64 @@
+.\" $NCDId: @(#)AuListD.man,v 1.1 1994/09/27 00:30:20 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuListD.man,v 1.1.1.1 1999/05/08 18:47:24 jon Exp $
+.TH AuListDevices 3 "1.2" "audiolib - device attributes"
+.SH \fBName\fP
+\fBAuListDevices\fP \- list devices
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuDeviceAttributes\fP *\fBAuListDevices\fP(\fIserver\fP, \fIvaluemask\fP, \fIattributes\fP, \fIndevices\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuMask\fP \fIvaluemask\fP;
+.br
+    \fBAuDeviceAttributes\fP *\fIattributes\fP;
+.br
+    int *\fIndevices\fP; 
+.br
+    \fBAuStatus\fP *\fIstatus\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIvaluemask\fP 1i
+Specifies which device attributes are defined in the attributes argument.
+This must be a bitwise inclusive OR of zero or more of these constants: \fBAuCompCommonIDMask\fP, \fBAuCompCommonKindMask\fP, \fBAuCompCommonUseMask\fP, \fBAuCommonFormatMask\fP, \fBAuCommonNumTracksMask\fP, \fBAuCommonAccessMask\fP, \fPAuCommonDescriptionMask\fP, \fBAuCompDeviceMinSampleRateMask\fP, \fBAuCompDeviceMaxSampleRateMask\fP, \fBAuCompDeviceLocationMask\fP, \fBAuCompDeviceGainMask\fP, \fBAuCompDeviceLineModeMask\fP, \fBAuCompDeviceChildrenMask\fP, or \fBAuCompDeviceMasks\fP.
+If valuemask is zero, the attributes are ignored and are not referenced.
+.IP \fIattributes\fP 1i
+Specifies the structure from which the values (as specified by the value mask) are to be taken.
+.IP \fIndevices\fP 1i
+Returns the number of devices in the returned list.
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuListDevices\fP returns a list of devices whose attributes match those values in \fIattributes\fP specified by \fIvaluemask\fP, or NULL, with \fIndevices\fP set to 0, if there was an error.
+Use \fBAuFreeDeviceList\fP to release the memory in the list when its nolonger needed.
+.SH \fBErrors\fP
+\fBAuBadLength\fP.
+.SH \fBSee Also\fP
+\fBAuGetDeviceAttributes\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

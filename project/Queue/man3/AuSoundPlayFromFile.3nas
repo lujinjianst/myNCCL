@@ -1,0 +1,86 @@
+.\" $NCDId: @(#)AuSPFF.man,v 1.2 1995/05/23 23:53:01 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuSPFF.man,v 1.1.1.1 1999/05/08 18:47:27 jon Exp $
+.TH AuSoundPlayFromFile 3 "1.2" "soundlib"
+.SH \fBName\fP
+\fBAuSoundPlayFromFile\fP \- create a flow to play a file.
+.SH \fBSynopsis\fP
+
+.br
+
+.sp 1
+\fBAuEventHandlerRec\fP *\fBAuSoundPlayFromFile\fP(\fIserver\fP, \fIfilename\fP, \fIdestination\fP, \fIvolume\fP, \fIcallback\fP, \fIcallback_data\fP, \fIflow\fP ,\fIvolume_mult_elem\fP, \fImonitor_element\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    char *\fIfilename\fP;
+.br
+    \fBAuDeviceID\fP \fIdestination\fP;
+.br
+    \fBAuFixedPoint\fP \fIvolume\fP;
+.br
+    void (*\fIcallback\fP) (\fBAuServer\fP *, \fBAuEventHandlerRec\fP *,\fBAuEvent\fP *,\fBAuPointer\fP);
+.br
+    \fBAuPointer\fP \fIcallback_data\fP;
+.br
+    \fBAuFlowID\fP *\fIflow\fP; 
+.br
+    int *\fIvolume_mult_elem\fP; 
+.br
+    int *\fImonitor_element\fP; 
+.br
+    \fBAuStatus\fP *\fIstatus\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIfilename\fP 1i
+Specifies the name of the file to play.
+.IP \fIdestination\fP 1i
+Specifies the device to output the audio data.
+.IP \fIvolume\fP 1i
+Specifies the volume.
+.IP \fIcallback\fP 1i
+Specifies the procedure to be called for additional event processing.
+.IP \fIcallback_data\fP 1i
+Specifies any additional arguments to be passed to the callback.
+.IP \fIflow\fP 1i
+If non-NULL, returns the flow ID.
+.IP \fIvolume_mult_elem\fP 1i
+If non-NULL, returns the index of the volume multipler element.
+.IP \fImonitor_element\fP 1i
+If non-NULL, include an ExportMonitor element in the flow and return it's index.
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuSoundPlayFromFile\fP creates a flow to play \fIfilename\fP on \fIdevice\fP and returns a pointer to the event handler created or NULL if there was an error.
+.SH \fBErrors\fP
+\fBAuBadDevice\fP.
+.SH \fBSee Also\fP
+\fBAuSoundPlay\fP,
+\fBAuSoundPlayFromBucket\fP,
+\fBAuSoundPlayFromData\fP,
+\fBAuSoundPlaySynchronousFromFile\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

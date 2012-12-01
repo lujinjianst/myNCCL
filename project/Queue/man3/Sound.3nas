@@ -1,0 +1,82 @@
+.\" $NCDId: @(#)Sound.man,v 1.2 1995/05/23 23:53:14 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: Sound.man,v 1.1.1.1 1999/05/08 18:47:29 jon Exp $
+.TH Sound 3 "1.2" "sound"
+.SH \fBName\fP
+\fBSound\fP \- audio file description.
+.SH \fBStructures\fP
+
+.br
+
+.sp 1
+typedef struct
+.br
+{
+.br
+    . . .
+.br
+}\fBSoundRec\fP, *\fBSound\fP;
+.SH \fBMembers\fP
+Do not dereference the members of the \fBSoundRec\fP structure directly.
+Instead use the access macros.
+.LP
+\fIsound\fP is a \fBSound\fP, a pointer to a \fBSoundRec\fP structure.
+.IP \fBSoundFileFormat\fB(\fIsound\fP) 1i
+Accesses the int value giving the format of the sound file.
+.IP \fBSoundFileFormatString\fB(\fIsound\fP) 1i
+Accesses the string description of the format of the sound file.
+.IP \fBSoundDataFormat\fB(\fIsound\fP) 1i
+Accesses the int value giving the data format of the sound file.
+.IP \fBSoundDataFormatString\fB(\fIsound\fP) 1i
+Accesses the string description of the data format of the sound file.
+.IP \fBSoundNumTracks\fB(\fIsound\fP) 1i
+Accesses the int value giving the number of tracks in the audio data in the sound file.
+.IP \fBSoundSampleRate\fB(\fIsound\fP) 1i
+Accesses the int value giving the samples rate of the audio data in the sound file.
+.IP \fBSoundNumSamples\fB(\fIsound\fP) 1i
+Accesses the int value giving the total number of samples.
+.IP \fBSoundComment\fB(\fIsound\fP) 1i
+Accesses the string comment.
+.IP \fBSoundBytesPerSample\fB(\fIsound\fP) 1i
+Returns the bytes per sample of audio data.
+.IP \fBSoundNumBytes\fB(\fIsound\fP) 1i
+Returns the total number of bytes of audio data in the sound file.
+.IP \fBSoundValidateDataFormat\fB(\fIsound\fP) 1i
+Returns true if the sound file format is a valid format.
+.SH \fBDescription\fP
+The \fBSoundRec\fP structure describes an audio file.
+.SH \fBSee Also\fP
+\fBSoundCloseFile\fP,
+\fBSoundCreate\fP,
+\fBSoundFlushFile\fP,
+\fBSoundOpenFileForReading\fP,
+\fBSoundOpenFileWriting\fP,
+\fBSoundReadFile\fP,
+\fBSoundRewindFile\fP,
+\fBSoundSeekFile\fP,
+\fBSoundTellFile\fP,
+\fBSoundWriteFile\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

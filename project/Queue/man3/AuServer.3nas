@@ -1,0 +1,105 @@
+.\" $NCDId: @(#)AuServer.man,v 1.1 1994/09/27 00:36:39 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuServer.man,v 1.1.1.1 1999/05/08 18:47:28 jon Exp $
+.TH AuServer 3 "1.2" "audiolib - "
+.SH \fBName\fP
+\fBAuServer\fP \- AuServer structure
+.SH \fBStructures\fP
+
+.sp 1
+typedef struct _AuServer
+.br
+{
+.br
+    . . .
+.br
+}\fBAuServer\fP;
+.SH MACROS
+Do not dereference the members of the \fBAuServer\fP structure directly.
+Instead use the access macros.
+.LP
+\fIserver\fP is a pointer to a \fBAuServer\fP structure.
+.IP \fBAuServerConnectionNumber\fP(\fIserver\fP) 1i
+Accesses the int connection number.
+.IP \fBAuServerQLength\fP(\fIserver\fP) 1i
+Accesses the int value with the length of the input queue.
+.IP \fBAuServerVendor\fP(\fIserver\fP) 1i
+Accesses the NUL-terminated string giving the identification of the audio server vendor.
+.IP \fBAuServerProtocolMajorVersion\fP(\fIserver\fP) 1i
+Accesses the int value of the major protocol revision number of the audio server.
+.IP \fBAuServerProtocolMinorVersion\fP(\fIserver\fP) 1i
+Accesses the int value of the minor protocol revision number of the audio server.
+.IP \fBAuServerVendorRelease\fP(\fIserver\fP) 1i
+Accesses the int value with the release number of the audio server.
+.IP \fBAuServerString\fP(\fIserver\fP) 1i
+Accesses the NUL-terminated string giving the server name.
+.IP \fBAuServerNextRequest\fP(\fIserver\fP) 1i
+Accesses the \fBAuUint32\fP serial ID of the next protocol request to be sent.
+.IP \fBAuServerLastKnownRequestProcessed\fP(\fIserver\fP) 1i
+Accesses the \fBAuUint32\fP serial ID of the last known protocol request sent.
+.IP \fBAuServerResourceBase\fP(\fIserver\fP) 1i
+Accesses the \fBAuID\fP base used in constructing resource ID's.
+.IP \fBAuServerResourceMask\fP(\fIserver\fP) 1i
+Accesses the \fBAuID\fP mask used in constructing resource ID's.
+.IP \fBAuServerMinSampleRate\fP(\fIserver\fP) 1i
+Accesses the int value with the minimum sample rate supported by the server.
+.IP \fBAuServerMaxSampleRate\fP(\fIserver\fP) 1i
+Accesses the int value with the maximum sample rate supported by the server.
+.IP \fBAuServerMaxTracks\fP(\fIserver\fP) 1i
+Accesses the int value indicating the maximum number of tracks supported by the server.
+.IP \fBAuServerNumFormats\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of formats supported by the server.
+.IP \fBAuServerNumElementTypes\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of element types supported by the server.
+.IP \fBAuServerNumWaveForms\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of waveform generators supported by the server.
+.IP \fBAuServerNumActions\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of actions supported by the server.
+.IP \fBAuServerNumDevices\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of server devices.
+.IP \fBAuServerNumBuckets\fP(\fIserver\fP) 1i
+Accesses the int value indicating the number of server buckets.
+.IP "\fBAuServerFormat\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the int value of the \fIn\fP'th format supported by the server.
+.IP "\fBAuServerElementType\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the int value of the \fIn\fP'th element supported by the server.
+.IP "\fBAuServerWaveForm\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the int value of the \fIn\fP'th waveform supported by the server.
+.IP "\fBAuServerAction\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the int value of the \fIn\fP'th action supported by the server.
+.IP "\fBAuServerDevice\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the \fBAuDeviceAttributes\fP structure of the \fIn\fP'th server device.
+.IP "\fBAuServerBucket\fP(\fIserver\fP, \fIn\fP)" 1i
+Accesses the \fBAuBucketAttributes\fP structure of the \fIn\fP'th server bucket.
+.IP "\fBAuClientOfID\fP(\fIserver\fP, \fIresource\fP)" 1i
+Extracts the ClientID from \fIresource\fP.
+.IP "\fBAuID\fP \fBAuAllocID\fP(\fIserver\fP)" 1i
+Invokes the ID allocator function.
+.SH \fBDescription\fP
+The \fBAuServer\fP structure describes the connection to the audio server.
+.SH \fBSee Also\fP
+\fBAuCloseServer.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

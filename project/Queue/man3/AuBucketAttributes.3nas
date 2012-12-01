@@ -1,0 +1,83 @@
+.\" $NCDId: @(#)AuBAttr.man,v 1.1 1994/09/27 00:24:33 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuBAttr.man,v 1.1.1.1 1999/05/08 18:47:20 jon Exp $
+.TH AuBucketAttributes 3 "1.2" "audiolib - bucket attributes"
+.SH \fBName\fP
+\fBAuBucketAttributes\fP \- bucket attributes structure
+.SH \fBStructures\fP
+
+.sp 1
+typedef struct _AuBucketAttributes
+.br
+{
+.br
+    . . .
+.br
+}\fBAuBucketAttributes\fP;
+.SH \fBMembers\fP
+Do not dereference the members of the \fBAuBucketAttributes\fP structure directly.
+Instead use the access macros.
+.LP
+\fIba\fP is a pointer to a \fBAuBucketAttributes\fP structure.
+.IP \fBAuBucketValueMask\fP(\fIba\fP) 1i
+Accesses the \fBAuMask\fP value indicating which attributes are present.
+This is a bitwise inclusive OR of these constants:
+\fBAuCompCommonIDMask\fP, \fBAuCompCommonKindMask\fP, \fBAuCompCommonUseMask\fP, \fBAuCompCommonFormatMask\fP, \fBAuCompCommonNumTracksMask\fP, \fBAuCompCommonAccessMask\fP, \fBAuCompCommonDescriptionMask\fP, \fBAuCompBucketSampleRateMask\fP, and \fBAuCompBucketNumSamplesMask\fP.
+.IP \fBAuBucketChangableMask\fP(\fIba\fP) 1i
+Accesses the \fBAuMask\fP value indicating which of the attributes can be changed.
+This is a bitwise inclusive OR of these constants:
+\fBAuCompCommonIDMask\fP, \fBAuCompCommonKindMask\fP, \fBAuCompCommonUseMask\fP, \fBAuCompCommonFormatMask\fP, \fBAuCompCommonNumTracksMask\fP, \fBAuCompCommonAccessMask\fP, \fBAuCompCommonDescriptionMask\fP, \fBAuCompBucketSampleRateMask\fP, and \fBAuCompBucketNumSamplesMask\fP.
+.IP \fBAuBucketIdentifier\fP(\fIba\fP) 1i
+Accesses the \fBAuBucketID\fP ID of the bucket.
+.IP \fBAuBucketKind\fP(\fIba\fP) 1i
+Accesses the int value indicating the kind of component.
+Buckets will always be \fBAuComponentKindBucket\fP.
+.IP \fBAuBucketUse\fP(\fIba\fP) 1i
+Accesses the \fBAuMask\fP value indicating what uses of the bucket are permitted.
+This is a bitwise inclusive OR of these constants:
+\fBAuComponentUseImportMask\fP and \fBAuComponentUseExportMask\fP.
+.IP \fBAuBucketFormat\fP(\fIba\fP) 1i
+Accesses the int value indicating the audio data format the bucket uses.
+Currently, the following formats are defined:
+\fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatLinearSigned16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+.IP \fBAuBucketNumTracks\fP(\fIba\fP) 1i
+Accesses the int value indicating the number of tracks the bucket supports.
+.IP \fBAuBucketAccess\fP(\fIba\fP) 1i
+Accesses the \fBAuMask\fP value indicating what kinds of access the bucket allows.
+This is a bitwise inclusive OR of these constants:
+\fBAuAccessImportMask\fP, \fBAuAccessExportMask\fP, \fBAuAccessDestroyMask\fP, and \fBAuAccessListMask\fP.
+.IP \fBAuBucketDescription\fP(\fIba\fP) 1i
+Accesses the \fBAuString\fP structure containing a textual description of the bucket.
+.IP \fBAuBucketSampleRate\fP(\fIba\fP) 1i
+Accesses the unsigned int value indicating the sample rate of the bucket.
+.IP \fBAuBucketNumSamples\fP(\fIba\fP) 1i
+Accesses the \fBAuUint32\fP value indicating the number of samples the bucket contains.
+.SH \fBDescription\fP
+The \fBAuBucketAttributes\fP structure describes the server-local storage of audio data.
+.SH \fBSee Also\fP
+\fBAuGetBucketAttributes\fP,
+\fBAuListBuckets\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

@@ -1,0 +1,65 @@
+.\" $NCDId: @(#)AuREvtHn.man,v 1.1 1994/09/27 00:33:45 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuREvtHn.man,v 1.1.1.1 1999/05/08 18:47:25 jon Exp $
+.TH AuRegisterEventHandler 3 "1.2" "audioutil"
+.SH \fBName\fP
+\fBAuRegisterEventHandler\fP \- add an event handler.
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuEventHandlerRec\fP *\fPAuRegisterEventHandler\fP(\fIserver\fP, \fIvalue_mask\fP, \fItype\fP, \fIid\fP, \fIcallback data\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuMask\fP \fIvalue_mask\fP;
+.br
+    int \fItype\fP;
+.br
+    \fBAuID\fP \fIid\fP;
+.br
+    \fBAuBool\fP (*\fIcallback\fP)(\fBAuServer\fP *, \fBAuEvent\fP *, \fBAuEventHandlerRec\fP *);
+.br
+    \fBAuPointer\fP \fIdata\fP;
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIvalue_mask\fP 1i
+Specifies which values are checked to determine if this handler should handle an event.
+This should be an inclusive OR of \fBAuEventHandlerTypeMask\fP and \fBAuEventHandlerIDMask\fP.
+.IP \fItype\fP 1i
+Specifies the type of event that are to be handled by this handler.
+This should be one of these constants: \fBAuEventTypeElementNotify\fP, \fBAuEventTypeGrabNotify\fP, or \fBAuEventTypeMonitorNotify\fP.
+.IP \fIid\fP 1i
+Specifies the source id of the event that are to be handled by this handler.
+.IP \fIcallback\fP 1i
+Specifies the procedure to handle the event.
+.IP \fIdata\fP 1i
+Specifies additional data to be passed to the event handler.
+.SH \fBDescription\fP
+\fBAuRegisterEventHandler\fP registers an event handler for future use by \fBAuDispatchEvent\fP.
+.SH \fBSee Also\fP
+\fBAuUnregisterEventHandler\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

@@ -1,0 +1,71 @@
+.\" $NCDId: @(#)AuScEvt.man,v 1.1 1994/09/27 00:36:22 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuScEvt.man,v 1.1.1.1 1999/05/08 18:47:27 jon Exp $
+.TH AuScanEvents 3 "1.2" "audiolib - event handling"
+.SH \fBName\fP
+\fBAuScanEvents\fP \- return the first event that satisfies the predicate
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuBool\fP \fBAuScanEvents\fP(\fIserver\fP, \fImode\fP, \fIdequeue\fP, \fIpredicate\fP, \fIarg\fP, \fIevent\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    int \fImode\fP;
+.br
+    \fBAuBool\fP \fIdequeue\fP;
+.br
+    \fBAuBool\fP (*\fIpredicate\fP)(\fBAuServer\fP *,\fBAuEvent\fP *, \fBAuPointer\fP);
+.br
+    \fBAuPointer\fP \fIarg\fP;
+.br
+    \fBAuEvent\fP *\fIevent\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fImode\fP 1i
+Specifies how far to look for a match.
+This should be one of these constants: \fBAuEventsQueuedAlready\fP, \fBAuEventsQueuedAfterReading\fP, or \fBAuEventsQueuedAfterFlush\fP.
+.IP \fIdequeue\fP 1i
+Specifies if a matching event is found, should it be removed from the queue.
+.IP \fIpredicate\fP 1i
+Specifies the procedure that is called to determine if an event matches the criteria.
+.IP \fIarg\fP 1i
+Specifies any additional arguments to be passed to the predicate procedure.
+.IP \fIevent\fP 1i
+Returns the matching event if found. 
+.SH \fBDescription\fP
+\fBAuScanEvents\fP scans the event queue looking for the first event that satisfies the caller-supplied predicate.
+If \fImode\fP is \fBAuEventsQueuedAlready\fP, \fBAuScanEvents\fP only checks for events already in the queue.
+If \fImode\fP is \fBAuEventsQueuedAfterReading\fP, and a matching event isn't found already in the queue, \fBAuScanEvents\fP attempts to read more events out of the application's connection.
+If \fImode\fP is \fBAuEventsQueuedAfterFlush\fP and a matching event isn't already in the queue or isn't waiting to be read, \fBAuScanEvents\fP flushes the output queue and attempts to read more events out of the application's connection.
+If \fIdequeue\fP is \fBAuTrue\fP, and a matching event is found, it is removed from the queue.
+The predicate procedure is called with the arguments \fIserver\fP, \fIevent\fP, and \fIarg\fP and should return \fBAuTrue\fP to indicate a match.
+.SH \fBSee Also\fP
+\fBAuEventsQueued\fP,
+\fBAuScanForTypedEvent\fP,
+\fBAuNextEvent\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

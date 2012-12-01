@@ -1,0 +1,54 @@
+.\" $NCDId: @(#)AuRScFlw.man,v 1.1 1994/09/27 00:33:51 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuRScFlw.man,v 1.1.1.1 1999/05/08 18:47:25 jon Exp $
+.TH AuReleaseScratchFlow 3 "1.2" "audioutil"
+.SH \fBName\fP
+\fBAuReleaseScratchFlow\fP \- release a scratch flow.
+.SH \fBSynopsis\fP
+
+.sp 1
+void \fBAuReleaseScratchFlow\fP(\fIserver\fP, \fIflow\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuFlowID\fP \fIflow\fP;
+.br
+    \fBAuStatus\fP *\fIstatus\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIflow\fP 1i
+Specifies the ID of the flow to release.
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuReleaseScratchFlow\fP releases \fIflow\fP.
+If \fIflow\fP is not one of the pre-allocated flows, it will be destroyed.
+.SH \fBErrors\fP
+\fBAuBadFlow\fP.
+.SH \fBSee Also\fP
+\fBAuGetSratchFlow\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

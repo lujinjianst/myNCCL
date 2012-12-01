@@ -1,0 +1,56 @@
+.\" $NCDId: @(#)AuSPSFF.man,v 1.2 1995/05/23 23:53:03 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuSPSFF.man,v 1.1.1.1 1999/05/08 18:47:27 jon Exp $
+.TH AuSoundPlaySynchronousFromFile 3 "1.2" "soundlib"
+.SH \fBName\fP
+\fBAuSoundPlaySynchronousFromFile\fP \- play a file.
+.SH \fBSynopsis\fP
+
+.br
+
+.sp 1
+\fBAuBool\fP \fBAuSoundPlaySynchronousFromFile\fP(\fIserver\fP, \fIfilename\fP, \fIvolume\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    char *\fIfilename\fP;
+.br
+    int \fIvolume\fP;
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIfilename\fP 1i
+Specifies the name of the audio data file.
+.IP \fIvolume\fP 1i
+Specifies the volume level.
+.SH \fBDescription\fP
+\fBAuSoundPlaySynchronousFromFile\fP plays \fIfilename\fP and returns \fBAuTrue\fP when done or \fBAuFalse\fP if there was an error.
+.SH \fBSee Also\fP
+\fBAuSoundPlay\fP,
+\fBAuSoundPlayFromBucket\fP,
+\fBAuSoundPlayFromData\fP,
+\fBAuSoundPlayFromFile\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

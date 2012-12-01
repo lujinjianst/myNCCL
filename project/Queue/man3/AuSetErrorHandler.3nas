@@ -1,0 +1,55 @@
+.\" $NCDId: @(#)AuSErHn.man,v 1.1 1994/09/27 00:35:11 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuSErHn.man,v 1.1.1.1 1999/05/08 18:47:26 jon Exp $
+.TH AuSetErrorHandler 3 "1.2" "audiolib - error handling"
+.SH \fBName\fP
+\fBAuSetErrorHandler\fP \- set nonfatal error handler
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuBool\fP (*\fBAuSetErrorHandler\fP(\fIserver\fP, \fIhandler\fP))()
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuBool\fP (*\fIhandler\fP)(\fBAuServer\fP *, \fBAuErrorEvent\fP *);
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIhandler\fP 1i
+Specifies the non-fatal error handler.
+Use NULL to reinstall the default handler.
+.SH \fBDescription\fP
+\fBAuSetErrorHandler\fP sets the non-fatal error handler and returns the previous handler.
+This error handler will be invoked whenever a non-fatal error (error event) is received.
+As this condition is not assumed to be fatal, it is acceptable for the error handler to return.
+However, the error handler should not call any functions (directly or indirectly) on the server that will generate protocol requests or that will look for input events.
+.SH \fBSee Also\fP
+\fBAuServerName\fP,
+\fBAuGetErrorDatabaseText\fP,
+\fBAuGetErrorText\fP,
+\fBAuSetIOErrorHandler\fP,
+\fBAuSynchronize\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

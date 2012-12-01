@@ -1,0 +1,118 @@
+.\" $NCDId: @(#)AuMNtEvt.man,v 1.1 1994/09/27 00:33:07 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuMNtEvt.man,v 1.1.1.1 1999/05/08 18:47:25 jon Exp $
+.TH AuMonitorNotifyEvent 3 "1.2" "audiolib - events"
+.SH \fBName\fP
+\fBAuMonitorNotifyEvent\fP \- monitor notify event structure
+.SH \fBStructures\fP
+
+.sp 1
+typedef union _AuEvent
+.br
+{
+.br
+    . . .
+.br
+    \fBAuMonitorNotifyEvent\fP \fIaumonitornotify\fP;
+.br
+    . . .
+.br
+}\fBAuEvent\fP;
+.sp 1
+typedef struct _AuMonitorNotifyEvent
+.br
+{
+.br
+    int \fItype\fP;
+.br
+    \fBAuUint32\fP \fIserial\fP;
+.br
+    \fBAuBool\fP \fIsend_event\fP;
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuTime\fP \fItime\fP;
+.br
+    \fBAuFlowID\fP \fIflow\fP;
+.br
+    unsigned char \fIelement_num\fP;
+.br
+    unsigned char \fIformat\fP;
+.br
+    unsigned char \fInum_tracks\fP;
+.br
+    unsigned short \fIcount\fP;
+.br
+    unsigned short \fInum_fields\fP;
+.br
+    \fBAuUint32\fP \fIdata\fP;
+.br
+    \fBAuUint32\fP \fIdata1\fP;
+.br
+    \fBAuUint32\fP \fIdata2\fP;
+.br
+}\fBAuMonitorNotifyEvent\fP;
+.SH \fBMembers\fP
+.IP \fItype\fP 1i
+The event type.
+MonitorNotify events are type \fBAuEventTypeMonitorNotify\fP.
+.IP \fIserial\fP 1i
+The serial ID of the event expanded from the 16 bit value sent by the server.
+.IP \fIsend_event\fP 1i
+\fBAuTrue\fP if the event came from a \fBSendEvent\fP protocol request.
+.IP \fIserver\fP 1i
+The connection to the audio server that the event was read from.
+.IP \fItime\fP 1i
+The server time in milliseconds when the event was generated.
+.IP \fIflow\fP 1i
+Specifies the ID of the flow that caused the event.
+.IP \fIelement_num\fP 1i
+The index of the ExportMonitor element that gnerated this event.
+.IP \fIformat\fP 1i
+The format of the monitor data.
+Currently, the following formats are defined: \fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatSignedLinear16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+Taken from the ExportMonitor element.
+.IP \fInum_tracks\fP 1i
+The number of tracks in the monitor data.
+Taken from the ExportMonitor element.
+.IP \fIcount\fP 1i
+Always 0.
+.IP \fInum_fields\fP 1i
+Always 2.
+.IP \fIdata\fP 1i
+Monitor data.
+.IP \fIdata1\fP 1i
+Monitor data.
+.IP \fIdata2\fP 1i
+Monitor data.
+.SH \fBDescription\fP
+MonitorNotify events will be sent to clients with flows containing ExportMonitor elements.
+.SH \fBSee Also\fP
+\fBAuAnyEvent\fP,
+\fBAuElementNotifyEvent\fP,
+\fBAuErrorEvent\fP,
+\fBAuGrabNotifyEvent\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

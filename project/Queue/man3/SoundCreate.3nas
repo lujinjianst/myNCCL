@@ -1,0 +1,66 @@
+.\" $NCDId: @(#)SoCreate.man,v 1.1 1994/09/27 00:37:59 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: SoCreate.man,v 1.1.1.1 1999/05/08 18:47:28 jon Exp $
+.TH SoundCreate 3 "1.2" ""
+.SH \fBName\fP
+\fBSoundCreate\fP \- create a description of an audio file.
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBSound\fP \fBSoundCreate\fP(\fIfile_format\fP, \fIdata_format\fP, \fInum_tracks\fP, \fIsample_rate\fP, \fInum_samples\fP, \fIcomment\fP)
+.br
+    int \fIfile_format\fP;
+.br
+    int \fIdata_format\fP;
+.br
+    int \fInum_tracks\fP;
+.br
+    int \fIsample_rate\fP;
+.br
+    int \fInum_samples\fP;
+.br
+    char *\fIcomment\fP;
+.SH \fBArguments\fP
+.IP \fIfile_format\fP 1i
+Specifies the format of the audio file.
+Currently, the following file formats are supported: \fBSoundFileFormatSnd\fP, \fBSoundFileFormatVoc\fP, \fBSoundFileFormatWave\fP, \fBSoundFileFormatAiff\fP, and \fBSoundFileFormatSvx\fP.
+.IP \fIdata_format\fP 1i
+Specifies the format of the audio data.
+Currently, the following formats are defined: \fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatSignedLinear16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+.IP \fInum_tracks\fP 1i
+Specifies the number of tracks in the audio data.
+.IP \fIsample_rate\fP 1i
+Specifies the sample rate of the audio data.
+.IP \fInum_samples\fP 1i
+Specifies the number of samples in the audio data.
+.IP \fIcomment\fP 1i
+.SH \fBDescription\fP
+\fBSoundCreate\fP creates a \fBSoundRec\fP structure, initializes it with the specified values and returns a \fBSound\fP (a pointer to the \fBSoundRec\fP structure) or NULL if there was an error.
+.SH \fBSee Also\fP
+\fBSoundCloseFile\fP,
+\fBSoundOpenFileForReading\fP,
+\fBSoundOpenFileWriting\fP,
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

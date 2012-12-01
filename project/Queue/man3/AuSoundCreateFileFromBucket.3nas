@@ -1,0 +1,64 @@
+.\" $NCDId: @(#)AuSCFFBk.man,v 1.1 1994/09/27 00:34:39 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuSCFFBk.man,v 1.1.1.1 1999/05/08 18:47:26 jon Exp $
+.TH AuSoundCreateFileFromBucket 3 "1.2" "soundlib"
+.SH \fBName\fP
+\fBAuSoundCreateFileFromBucket\fP \- copy the data from a bucket into a file.
+.SH \fBSynopsis\fP
+
+.br
+
+.sp 1
+\fBAuBool\fP \fBAuSoundCreateFileFromBucket\fP(\fIserver\fP, \fIfilename\fP, \fIfile_format\fP, \fIbucket\fP, \fIstatus\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    char *\fIfilename\fP;
+.br
+    int \fIfile_format\fP;
+.br
+    \fBAuBucketID\fP \fIbucket\fP;
+.br
+    \fBAuStatus\fP *\fIstatus\fP;
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIfilename\fP 1i
+Specifies the name of the file to use.
+.IP "\fIfile format\fP" 1i
+Specifies the format of the file.
+Currently, the following file formats are supported: \fBSoundFileFormatSnd\fP, \fBSoundFileFormatVoc\fP, \fBSoundFileFormatWave\fP, \fBSoundFileFormatAiff\fP, \fBSoundFileFormatSvx\fP.
+.IP \fIbucket\fP 1i
+Specifies the bucket to get the audio data from.
+.IP \fIstatus\fP 1i
+If non-NULL, flush the output buffer and return the status from the server.
+.SH \fBDescription\fP
+\fBAuSoundCreateFileFromBucket\fP creates a file using the audio data from \fIbucket\fP and returns \fBAuTrue\fP if successfull or \fBAuFalse\fP if there was an error.
+.SH \fBErrors\fP
+\fBAuBadBucket\fP.
+.SH \fBSee Also\fP
+\fBAuSoundCreateDataFromBucket\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

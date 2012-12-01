@@ -1,0 +1,51 @@
+.\" $NCDId: @(#)AuDataFr.man,v 1.1 1994/09/27 00:25:19 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuDataFr.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuDataFormats 3 "1.2" "audiolib - misc"
+.SH \fBName\fP
+\fBAuDataFormats\fP \- audio data formats.
+.SH \fBSynopsis\fP
+
+.LP
+Currently, the following data formats are defined:
+\fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatSignedLinear16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+.IP \fBAuFormatULAW8\fP 1i
+Designates a data format in which samples are stored as 8-bit ulaw values.
+.IP \fBAuFormatLinearUnsigned8\fP 1i
+Designates a data format in which samples are stored as unsigned 8-bit values.
+.IP \fBAuFormatLinearSigned8\fP 1i
+Designates a data format in which samples are stored as signed 8-bit values.
+.IP \fBAuFormatLinearSigned16MSB\fP 1i
+Designates a data format in which samples are stored as signed 16-bit values, with the most significant byte first.
+.IP \fBAuFormatLinearUnsigned16MSB\fP 1i
+Designates a data format in which samples are stored as unsigned 16-bit values, with the most significant byte first.
+.IP \fBAuFormatSignedLinear16LSB\fP 1i
+Designates a data format which samples are stored as signed 16-bit values, with the least significant byte first.
+.IP \fBAuFormatLinearUnsigned16LSB\fP 1i
+Designates a data format which samples are stored as unsigned 16-bit values, with the least significant byte first.
+.SH \fBSee Also\fP
+\fBAuFileFormats\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

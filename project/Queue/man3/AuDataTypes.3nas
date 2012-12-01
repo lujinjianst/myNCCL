@@ -1,0 +1,69 @@
+.\" $NCDId: @(#)AuDataTp.man,v 1.1 1994/09/27 00:25:24 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuDataTp.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuDataTypes 3 "1.2" ""
+.SH \fBName\fP
+\fBAuDataTypes\fP \- data types
+.SH \fBSynopsis\fP
+
+.sp 1
+.IP \fBAuInt32\fP 1i
+A 32 bit integer.
+.IP \fBAuUint32\fP 1i
+A 32 bit unsigned integer.
+.IP \fBAuInt16\fP 1i
+A 16 bit integer.
+.IP \fBAuUint16\fP 1i
+A 16 bit unsigned integer.
+.IP \fBAuInt8\fP 1i
+An 8 bit integer.
+.IP \fBAuUint8\fP 1i
+An 8 bit unsigned integer.
+.IP \fBAuID\fP 1i
+A generic resource id.
+.IP \fBAuDeviceID\fP 1i
+A physical or virtual.
+.IP \fBAuBucketID\fP 1i
+Server-local stored audio data.
+.IP \fBAuRadioID\fP 1i
+A broadcast.
+.IP \fBAuFlowID\fP 1i
+How audio data moves.
+.IP \fBAuTime\fP 1i
+Server time in milliseconds.
+.IP \fBAuMask\fP 1i
+Various value masks
+.IP \fBAuBool\fP 1i
+Boolean
+.IP \fBAuStatus\fP 1i
+
+.IP \fBAuFixedPoint\fP 1i
+Fixed point value with a 16 bit integer portion and a 16 bit fractional portion.
+.SH \fBSee Also\fP
+\fBAuDataFormats\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface
+
+

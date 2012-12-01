@@ -1,0 +1,111 @@
+.\" $NCDId: @(#)AuElmnt.man,v 1.1 1994/09/27 00:26:17 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuElmnt.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuElement 3 "1.2" "audiolib - element union"
+.SH \fBName\fP
+\fBAuElement\fP \- AuElement union
+.SH \fBStructures\fP
+
+.sp 1
+typedef union _AuElement
+.br
+{
+.br
+    unsigned short \fItype\fP;
+.br
+    \fBAuElementImportClient\fP \fIimportclient\fP;
+.br
+    \fBAuElementImportDevice\fP \fIimportdevice\fP;
+.br
+    \fBAuElementImportBucket\fP \fIimportbucket\fP;
+.br
+    \fBAuElementImportWaveForm\fP \fIimportwaveform\fP;
+.br
+    \fBAuElementBundle\fP \fIbundle\fP;
+.br
+    \fBAuElementMultiplyConstant\fP \fImultiplyconstant\fP;
+.br
+    \fBAuElementAddConstant\fP \fIaddconstant\fP;
+.br
+    \fBAuElementSum\fP \fIsum\fP;
+.br
+    \fBAuElementExportClient\fP \fIexportclient\fP;
+.br
+    \fBAuElementExportDevice\fP \fIexportdevice\fP;
+.br
+    \fBAuElementExportBucket\fP \fIexportbucket\fP;
+.br
+    \fBAuElementExportMonitor\fP \fIexportmonitor\fP;
+.br
+}\fBAuElement\fP;
+.SH \fBMembers\fP
+.IP \fItype\fP 1i
+Specifies the element type.
+Currently, one of these constants: \fBAuElementTypeAddConstant\fP, \fBAuElementTypeBundle\fP, \fBAuElementTypeExportBucket\fP, \fBAuElementTypeExportClient\fP, \fBAuElementTypeExportDevice\fP, \fBAuElementTypeExportMonitor\fP, \fBAuElementTypeImportClient\fP, \fBAuElementTypeImportDevice\fP, \fBAuElementTypeImportBucket\fP, \fBAuElementTypeImportWaveForm\fP, \fBAuElementTypeMultiplyConstant\fP, or \fBAuElementTypeSum\fP.
+.IP \fIimportclient\fP 1i
+Used to read audio data from a client application.
+.IP \fIimportdevice\fP 1i
+Used to read audio data from a device.
+.IP \fIimportbucket\fP 1i
+Used to read audio data from a bucket.
+.IP \fIimportwaveform\fP 1i
+Used to read audio data from a waveform generator.
+.IP \fIbundle\fP 1i
+Used to access tracks in audio data.
+.IP \fImultiplyconstant\fP 1i
+Used to scale the value of samples in audio data.
+.IP \fIaddconstant\fP 1i
+Used to offset the value of samples in audio data.
+.IP \fIsum\fP 1i
+Used to merge together samples from different inputs.
+.IP \fIexportclient\fP 1i
+Used to write audio data to a client application.
+.IP \fIexportdevice\fP 1i
+Used to write audio data to a device.
+.IP \fIexportbucket\fP 1i
+Used to write audio data to a bucket.
+.IP \fIexportmonitor\fP 1i
+Used to write monitor data to a client application.
+.SH \fBDescription\fP
+Elements are instructions to the server on how to handle the audio data in a flow.
+.SH \fBSee Also\fP
+\fBAuMakeElementAddConstant\fP,
+\fBAuMakeElementBundle\fP,
+\fBAuMakeElementImportClient\fP,
+\fBAuMakeElementImportDevice\fP,
+\fBAuMakeElementImportBucket\fP,
+\fBAuMakeElementImportWaveForm\fP,
+\fBAuMakeElementExportClient\fP,
+\fBAuMakeElementExportDevice\fP,
+\fBAuMakeElementExportBucket\fP,
+\fBAuMakeElementExportMonitor\fP,
+\fBAuMakeElementMultiplyConstant\fP,
+\fBAuMakeElementSum\fP,
+\fBAuReadElement\fP,
+\fBAuSetElements\fP,
+\fBAuSetElementParameters\fP,
+\fBAuWriteElement\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

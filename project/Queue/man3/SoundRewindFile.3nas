@@ -1,0 +1,42 @@
+.\" $NCDId: @(#)SoRwFile.man,v 1.1 1994/09/27 00:38:24 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: SoRwFile.man,v 1.1.1.1 1999/05/08 18:47:29 jon Exp $
+.TH SoundRewindFile 3 "1.2" ""
+.SH \fBName\fP
+\fBSoundRewindFile\fP \- rewind an audio file.
+.SH \fBSynopsis\fP
+
+.sp 1
+int \fBSoundRewindFile\fP(\fIsound\fP)
+.br
+    \fBSound\fP \fIsound\fP;
+.SH \fBArguments\fP
+.IP \fIsound\fP 1i
+Specifies the audio file description.
+.SH \fBDescription\fP
+\fBSoundRewindFile\fP resets the position of read/write of the audio file to the beginning.
+.SH \fBSee Also\fP
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

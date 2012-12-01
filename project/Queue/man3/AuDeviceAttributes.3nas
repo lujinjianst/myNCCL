@@ -1,0 +1,96 @@
+.\" $NCDId: @(#)AuDAttr.man,v 1.1 1994/09/27 00:25:12 greg Exp $
+.\" Copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuDAttr.man,v 1.1.1.1 1999/05/08 18:47:21 jon Exp $
+.TH AuDeviceAttributes 3 "1.2" "audiolib - device attributes structure"
+.SH \fBName\fP
+\fBAuDeviceAttributes\fP \- device attributes structure
+.SH \fBStructures\fP
+
+.sp 1
+typedef struct _AuDeviceAttributes
+.br
+{
+.br
+    . . .
+.br
+}\fBAuDeviceAttributes\fP;
+.SH \fBMembers\fP
+Do not dereference the members of the \fBAuDeviceAttributes\fP structure directly.
+Instead use the access macros.
+.LP
+\fIda\fP is a pointer to a \fBAuDeviceAttributes\fP structure.
+.IP \fBAuDeviceValueMask\fP(\fIda\fP) 1i
+Accesses the \fBAuMask\fP value indicating what attributes are present.
+This is a bitwise inclusive OR of these constants:
+\fBAuCompCommonIDMask\fP, \fBAuCompCommonKindMask\fP, \fBAuCompCommonUseMask\fP, \fBAuCompCommonFormatMask\fP, \fBAuCompCommonNumTracksMask\fP, \fBAuCompCommonAccessMask\fP, \fBAuCompCommonDescriptionMask\fP, \fBAuCompDeviceMinSampleRateMask\fP, \fBAuCompDeviceMaxSampleRateMask\fP, \fBAuCompDeviceLocationMask\fP, \fBAuCompDeviceGainMask\fP, \fBAuCompDeviceLineModeMask\fP, and \fBAuCompDeviceChildrenMask\fP.
+.IP \fBAuDeviceChangableMask\fP(\fIda\fP) 1i
+Accesses the \fBAuMask\fP value indicating which attributes can be changed.
+This is a bitwise inclusive OR of these constants:
+\fBAuCompCommonIDMask\fP, \fBAuCompCommonKindMask\fP, \fBAuCompCommonUseMask\fP, \fBAuCompCommonFormatMask\fP, \fBAuCompCommonNumTracksMask\fP, \fBAuCompCommonAccessMask\fP, \fBAuCompCommonDescriptionMask\fP, \fBAuCompDeviceMinSampleRateMask\fP, \fBAuCompDeviceMaxSampleRateMask\fP, \fBAuCompDeviceLocationMask\fP, \fBAuCompDeviceGainMask\fP, \fBAuCompDeviceLineModeMask\fP, and \fBAuCompDeviceChildrenMask\fP.
+.IP \fBAuDeviceIdentifier\fP(\fIda\fP) 1i
+Accesses the \fBAuFlowID\fP ID of the device.
+.IP \fBAuDeviceKind\fP(\fIda\fP) 1i
+Accesses the int value indicating the kind of component.
+Devices are either \fBAuComponentKindPhysicalInput\fP or \fBAuComponentKindPhysicalOutput\fP.
+.IP \fBAuDeviceUse\fP(\fIda\fP) 1i
+Accesses the \fBAuMask\fP value indicating what uses of the device are permitted.
+This is a bitwise inclusive OR of these constants:
+\fBAuComponentUseImportMask\fP and \fBAuComponentUseExportMask\fP.
+.IP \fBAuDeviceFormat\fP(\fIda\fP) 1i
+Accesses the int value indicating the audio data format the device uses.
+Currently, the following formats are defined:
+\fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatLinearSigned16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+.IP \fBAuDeviceNumTracks\fP(\fIda\fP) 1i
+Accesses the int value indicating the number of tracks the device supports.
+.IP \fBAuDeviceAccess\fP(\fIda\fP) 1i
+Accesses the \fBAuMask\fP value indicating what kinds of access are allowed.
+This is a bitwise inclusive OR of these constants:
+\fBAuAccessImportMask\fP, \fBAuAccessExportMask\fP, \fBAuAccessDestroyMask\fP, and \fBAuAccessListMask\fP.
+.IP \fBAuDeviceDescription\fP(\fIda\fP) 1i
+Accesses the \fBAuString\fP structure containing a textual description of the device.
+.IP \fBAuDeviceMinSampleRate\fP(\fIda\fP) 1i
+Accesses the unsigned int value indicating the minimum sample rate supported by the device.
+.IP \fBAuDeviceMaxSampleRate\fP(\fIda\fP) 1i
+Accesses the unsigned int value indicating the maximum sample rate supported by the device.
+.IP \fBAuDeviceLocation\fP(\fIda\fP) 1i
+Accesses the \fBAuMask\fP value indicating the location of the device.
+This is a bitwise inclusive OR of these constants:
+\fBAuDeviceLocationLeftMask\fP, \fBAuDeviceLocationCenterMask\fP, \fBAuDeviceLocationRightMask\fP, \fBAuDeviceLocationTopMask\fP, \fBAuDeviceLocationMiddleMask\fP, \fBAuDeviceLocationBottomMask\fP, \fBAuDeviceLocationBackMask\fP, \fBAuDeviceLocationFrontMask\fP, \fBAuDeviceLocationInternalMask\fP, and \fBAuDeviceLocationExternalMask\fP
+.IP \fBAuDeviceGain\fP(\fIda\fP) 1i
+Accesses the \fBAuFixedPoint\fP value with the current hardware amplification level.
+.IP \fBAuDeviceLineMode\fP(\fIda\fP) 1i
+Accesses the \fBAuInt32\fP value indicating the current line mode (input device only).
+.IP \fBAuDeviceNumChildren\fP(\fIda\fP) 1i
+Accesses the int value indicating the number of subcomponents of the device.
+.IP \fBAuDeviceChildren\fP(\fIda\fP) 1i
+Accesses the list of \fBAuDeviceID\fP's of the subcomponents of the device.
+.SH \fBDescription\fP
+The \fBAuDeviceAttributes\fP structure describes the physical hardware interface.
+.SH \fBSee Also\fP
+\fBAuGetDeviceAttributes\fP,
+\fBAuListDevices\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface
+

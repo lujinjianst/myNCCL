@@ -1,0 +1,55 @@
+.\" $NCDId: @(#)AuNxtEvt.man,v 1.1 1994/09/27 00:33:26 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuNxtEvt.man,v 1.1.1.1 1999/05/08 18:47:25 jon Exp $
+.TH AuNextEvent 3 "1.2" "audiolib - event handling"
+.SH \fBName\fP
+\fBAuNextEvent\fP \- return the next event
+.SH \fBSynopsis\fP
+
+.sp 1
+void \fBAuNextEvent\fP(\fIserver\fP, \fIdequeue\fP, \fIevent\fP)
+.br
+    \fBAuServer\fP *\fIserver\fP;
+.br
+    \fBAuBool\fP \fIdequeue\fP;
+.br
+    \fBAuEvent\fP *\fIevent\fP; 
+.SH \fBArguments\fP
+.IP \fIserver\fP 1i
+Specifies the connection to the audio server.
+.IP \fIdequeue\fP 1i
+Specifies if the event should be removed from the queue.
+.IP \fIevent\fP 1i
+Returns the event.
+.SH \fBDescription\fP
+\fBAuNextEvent\fP copies the next availible event into \fIevent\fP.
+If \fIdequeue\fP is \fBAuTrue\fP the event is removed from the queue.
+If the event queue is empty, \fBAuNextEvent\fP flushes the output queue and blocks until one arrives.
+.SH \fBSee Also\fP
+\fBAuEventsQueued\fP,
+\fBAuScanEvents\fP,
+\fBAuScanForTypedEvent\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

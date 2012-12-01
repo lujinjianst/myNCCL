@@ -1,0 +1,94 @@
+.\" $NCDId: @(#)AuMElImC.man,v 1.1 1994/09/27 00:32:04 greg Exp $
+.\" copyright 1994 Steven King
+.\"
+.\" portions are
+.\" * Copyright 1993 Network Computing Devices, Inc.
+.\" *
+.\" * Permission to use, copy, modify, distribute, and sell this software and its
+.\" * documentation for any purpose is hereby granted without fee, provided that
+.\" * the above copyright notice appear in all copies and that both that
+.\" * copyright notice and this permission notice appear in supporting
+.\" * documentation, and that the name Network Computing Devices, Inc. not be
+.\" * used in advertising or publicity pertaining to distribution of this
+.\" * software without specific, written prior permission.
+.\" * 
+.\" * THIS SOFTWARE IS PROVIDED 'AS-IS'.  NETWORK COMPUTING DEVICES, INC.,
+.\" * DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING WITHOUT
+.\" * LIMITATION ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+.\" * PARTICULAR PURPOSE, OR NONINFRINGEMENT.  IN NO EVENT SHALL NETWORK
+.\" * COMPUTING DEVICES, INC., BE LIABLE FOR ANY DAMAGES WHATSOEVER, INCLUDING
+.\" * SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES, INCLUDING LOSS OF USE, DATA,
+.\" * OR PROFITS, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, AND REGARDLESS OF
+.\" * WHETHER IN AN ACTION IN CONTRACT, TORT OR NEGLIGENCE, ARISING OUT OF OR IN
+.\" * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+.\"
+.\" $Id: AuMElImC.man,v 1.1.1.1 1999/05/08 18:47:24 jon Exp $
+.TH AuMakeElementImportClient 3 "1.2" "audiolib - element initialization"
+.SH \fBName\fP
+\fBAuMakeElementImportClient\fP \- initialize an ImportClient element
+.SH \fBSynopsis\fP
+
+.sp 1
+\fBAuMakeElementImportClient\fP(\fIelement\fP, \fIsample_rate\fP, \fIformat\fP, \fInum_tracks\fP, \fIdiscard\fP, \fImax_samples\fP, \fIlow_water_mark\fP, \fInum_actions\fP, \fIactions\fP)
+.br
+    \fBAuElement\fP *\fIelement\fP; 
+.br
+    unsigned short \fIsample_rate\fP;
+.br
+    unsigned char \fIformat\fP;
+.br
+    unsigned char \fInum_tracks\fP;
+.br
+    unsigned char \fIdiscard\fP;
+.br
+    \fBAuUint32\fP \fImax_samples\fP;
+.br
+    \fBAuUint32\fP \fIlow_water_mark\fP;
+.br
+    int \fInum_actions\fP;
+.br
+    \fBAuElementAction\fP *\fIactions\fP;
+.SH \fBArguments\fP
+.IP \fIelement\fP 1i
+Returns the initialized element.
+.IP \fIsample_rate\fP 1i
+Specifies the sample rate of the audio data.
+.IP \fIformat\fP 1i
+Specifies the format of the audio data.
+Currently, the following formats are defined: \fBAuFormatULAW8\fP, \fBAuFormatLinearUnsigned8\fP, \fBAuFormatLinearSigned8\fP, \fBAuFormatLinearSigned16MSB\fP, \fBAuFormatLinearUnsigned16MSB\fP, \fBAuFormatSignedLinear16LSB\fP, and \fBAuFormatLinearUnsigned16LSB\fP.
+.IP \fInum_tracks\fP 1i
+Specifies the number of tracks in the audio data.
+.IP \fIdiscard\fP 1i
+Specifies if the import should be paused initally.
+Normally \fBAuTrue\fP.
+\fBAuFalse\fP may crash the server.
+.IP \fImax_samples\fP 1i
+Specifies the maximum number of samples to accept in a single read.
+Ignored for "trivial" flows.
+.IP \fIlow_water_mark\fP 1i
+Specifies when to request additional audio data from the client application.
+When this number of samples are left in the buffer, and an EOF hasn't been received, a NotifyEvent with \fIkind\fP set to \fBAuElementNotifyKindLowWater\fP will be sent to the client application.
+.IP \fInum_actions\fP 1i
+Specifies the number of actions in \fIactions\fP.
+.IP \fIactions\fP 1i
+Specifies the list of actions to associate with this element.
+Entries in this list can be initialized with \fBAuMakeChangeStateAction\fP, \fBAuMakeSendNotifyAction\fP, and \fBAuMakeNoopAction\fP.
+May be NULL.
+.SH \fBDescription\fP
+\fBAuMakeElementImportClient\fP sets the \fItype\fP of \fIelement\fP to \fBAuElementTypeImportClient\fP and initializes the \fIimportclient\fP member of \fIelement\fP with the remaining arguments.
+.LP
+\fBAuMakeElementImportClient\fP is implemented as a macro.
+.SH \fBSee Also\fP
+\fBAuMakeElementAddConstant\fP,
+\fBAuMakeElementBundle\fP,
+\fBAuMakeElementExportClient\fP,
+\fBAuMakeElementExportDevice\fP,
+\fBAuMakeElementExportBucket\fP,
+\fBAuMakeElementExportMonitor\fP,
+\fBAuMakeElementImportDevice\fP,
+\fBAuMakeElementImportBucket\fP,
+\fBAuMakeElementImportWaveForm\fP,
+\fBAuMakeElementMultiplyConstant\fP,
+\fBAuMakeElementSum\fP.
+.sp 1
+audiolib \- \fBNetwork Audio System\fP C Language Interface

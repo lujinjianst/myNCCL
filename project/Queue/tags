@@ -1,0 +1,22 @@
+Mmain	main.c	/^int main(int argc, char *argv[])$/
+_find_max_node	queue.c	/^static struct node * _find_max_node(Queue *queue, /
+_queue_delete	queue.c	/^static void _queue_delete(Queue *queue, struct nod/
+_queue_enqueue	queue.c	/^static void _queue_enqueue(Queue *queue, struct no/
+all 	Makefile	/^all :$/
+com_find	main.c	/^int com_find(const void *f, const void *s)$/
+com_sort	main.c	/^int com_sort(const void *f, const void *s)$/
+is_alpha	main.c	/^bool is_alpha(char ch)$/
+make_node	queue.c	/^static inline struct node *make_node(void *data)$/
+make_word	main.c	/^word_t * make_word(const char *ret)$/
+parser_a_file	main.c	/^void parser_a_file(Queue *queue, const char *file)/
+parser_all_files	main.c	/^void parser_all_files(Queue *queue, const char *fi/
+queue_dequeue	queue.c	/^void *queue_dequeue(Queue *queue)$/
+queue_destroy	queue.c	/^void queue_destroy(Queue *queue)$/
+queue_enqueue	queue.c	/^void queue_enqueue(Queue *queue, void *data)$/
+queue_find	queue.c	/^void * queue_find(Queue *queue, void *data, $/
+queue_init	queue.c	/^void queue_init(Queue *queue)$/
+queue_is_empty	queue.c	/^bool queue_is_empty(Queue *queue)$/
+queue_is_full	queue.c	/^bool queue_is_full(Queue *queue)$/
+queue_sort	queue.c	/^void queue_sort(Queue *queue, compare com)$/
+show_result	main.c	/^void show_result(Queue *queue)$/
+string_filter	main.c	/^void string_filter(char *str)$/
