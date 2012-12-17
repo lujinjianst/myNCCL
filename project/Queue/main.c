@@ -60,6 +60,11 @@ void parser_a_file(Queue *queue, const char *file)
 	char buffer[4096];
 
 	fp = fopen(file, "r");
+	if (fp == NULL)
+	{
+		perror("testing");
+		exit(0);
+	}
 	assert(fp);
 
 	while(fgets(buffer, sizeof(buffer), fp) != NULL) {
