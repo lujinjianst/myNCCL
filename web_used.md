@@ -1,8 +1,6 @@
-http://codepad.org
+http://codepad.org  网上c语言编程工具
 
-http://ideone.com/
-
-网上c语言编程工具
+http://ideone.com/ 网上c语言编程工具
 
 
 进程上下文的用户空间代码和内核空间代码
