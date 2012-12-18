@@ -19,3 +19,4 @@ http://www.lumit.org/   开源学ARM 李明老师的
 
 http://vbird.dic.ksu.edu.tw/  鸟哥私房菜简体网页
 
+http://www.bookcd.cxstar.cn/saas/format/release/aspx/167a2c1d00d60ec351.aspx?DMCODE=1823400001 畅想之星随书光盘下载
